@@ -27,10 +27,10 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
+import com.example.tugasnavigasi.R
 
 @Composable
-fun FormDataDiri(modifier: Modifier)
-{
+fun FormDataDiri(modifier: Modifier) {
     //variabel-variabel untuk mengingat nilai masukan dari keyboard
     var textNama by remember { mutableStateOf("") }
     var textAlamat by remember { mutableStateOf("") }
@@ -41,11 +41,13 @@ fun FormDataDiri(modifier: Modifier)
     var alamat by remember { mutableStateOf("") }
     var jenis by remember { mutableStateOf("") }
 
-    val gender:List<String> = listOf("Laki-laki", "Perempuan")
+    val gender: List<String> = listOf("Laki-laki", "Perempuan")
 
-    Column(modifier = Modifier.padding(top = 50.dp),
+    Column(
+        modifier = Modifier.padding(top = 50.dp),
         verticalArrangement = Arrangement.Top,
-        horizontalAlignment = Alignment.CenterHorizontally) {
+        horizontalAlignment = Alignment.CenterHorizontally
+    ) {
         OutlinedTextField(
             value = textNama,
             singleLine = true,
@@ -82,7 +84,8 @@ fun FormDataDiri(modifier: Modifier)
             }
         )
         Divider(
-            modifier = Modifier.padding(bottom = dimensionResource(R.dimen.padding_medium),
+            modifier = Modifier.padding(
+                bottom = dimensionResource(R.dimen.padding_medium),
                 top = dimensionResource(R.dimen.padding_medium)
             ),
             thickness = dimensionResource(R.dimen.divider_tipis),
@@ -102,23 +105,28 @@ fun FormDataDiri(modifier: Modifier)
         }
 
         Divider(
-            modifier = Modifier.padding(bottom = dimensionResource(R.dimen.padding_medium),
-                top = dimensionResource(R.dimen.padding_medium
-                )),
+            modifier = Modifier.padding(
+                bottom = dimensionResource(R.dimen.padding_medium),
+                top = dimensionResource(
+                    R.dimen.padding_medium
+                )
+            ),
             thickness = dimensionResource(R.dimen.divider_tipis),
             color = Color.DarkGray
         )
 
-        ElevatedCard (
+        ElevatedCard(
             elevation = CardDefaults.cardElevation(defaultElevation = 10.dp),
             colors = CardDefaults.cardColors(containerColor = Color.Black),
             modifier = Modifier
                 .height(100.dp)
                 .width(300.dp)
         ) {
-            Column (modifier = Modifier.padding(horizontal = 5.dp, vertical = 15.dp),){
-                Text(text = "Nama   : "+nama, color = Color.White)
-                Text(text = "Gender : "+jenis, color = Color.White)
-                Text(text = "Alamat : "+alamat, color = Color.White)
+            Column(modifier = Modifier.padding(horizontal = 5.dp, vertical = 15.dp),) {
+                Text(text = "Nama   : " + nama, color = Color.White)
+                Text(text = "Gender : " + jenis, color = Color.White)
+                Text(text = "Alamat : " + alamat, color = Color.White)
             }
         }
+    }
+}
