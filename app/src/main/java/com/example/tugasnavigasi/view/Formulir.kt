@@ -159,3 +159,28 @@ fun Formulir(navController: NavController) {
                 )
 
                 Spacer(modifier = Modifier.height(32.dp))
+
+                // Tombol Submit
+                Button(
+                    onClick = {
+                        navController.navigate(Routes.LIST_DAFTAR) {
+                            popUpTo(Routes.HALAMAN_AWAL)
+                        }
+                    },
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .height(50.dp),
+                    shape = RoundedCornerShape(30.dp),
+                    colors = ButtonDefaults.buttonColors(containerColor = Color(0xFF3636C7)),
+                ) {
+                    Text(
+                        stringResource(R.string.submit),
+                        color = Color.White,
+                        fontSize = 18.sp
+                    )
+                }
+                Spacer(modifier = Modifier.height(16.dp))
+            }
+        }
+    }
+}
