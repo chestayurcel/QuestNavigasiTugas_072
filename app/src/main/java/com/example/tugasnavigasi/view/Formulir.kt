@@ -25,7 +25,6 @@ import com.example.tugasnavigasi.R
 import com.example.tugasnavigasi.Routes
 
 @Composable
-// 2. Nama fungsi diubah dan menerima NavController
 fun Formulir(navController: NavController) {
     var namaLengkap by remember { mutableStateOf("") }
     var jenisKelamin by remember { mutableStateOf("") }
@@ -34,7 +33,6 @@ fun Formulir(navController: NavController) {
     val statusPerkawinanOptions = listOf("Janda", "Lajang", "Duda") // Menambah opsi
     var alamat by remember { mutableStateOf("") }
 
-    // Warna dari kode Anda
     val lightPurple = Color(0xFFB17EEA)
     val darkPurple = Color(0xFF6750A4)
     val backgroundColor = Color(0xFFEAE1FA)
@@ -50,7 +48,6 @@ fun Formulir(navController: NavController) {
             modifier = Modifier
                 .fillMaxWidth()
                 .background(lightPurple)
-                // Tinggi header bisa lebih fleksibel
                 .heightIn(min = 100.dp)
                 .padding(16.dp),
             contentAlignment = Alignment.BottomStart
@@ -64,3 +61,101 @@ fun Formulir(navController: NavController) {
         }
 
         Spacer(modifier = Modifier.height(16.dp))
+
+        // Card untuk Isi Formulir
+        Card(
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(horizontal = 16.dp),
+            shape = RoundedCornerShape(25.dp),
+            elevation = CardDefaults.cardElevation(defaultElevation = 5.dp),
+            colors = CardDefaults.cardColors(containerColor = Color.White)
+        ) {
+            Column(
+                modifier = Modifier.padding(20.dp)
+            ) {
+                // Input Nama Lengkap
+                Text(
+                    text = "NAMA LENGKAP",
+                    fontSize = 15.sp,
+                    fontWeight = FontWeight.Bold,
+                    color = Color.Gray,
+                    modifier = Modifier.padding(bottom = 4.dp)
+                )
+                OutlinedTextField(
+                    value = namaLengkap,
+                    onValueChange = { namaLengkap = it },
+                    label = { Text("Isian nama lengkap") },
+                    modifier = Modifier.fillMaxWidth(),
+                    shape = RoundedCornerShape(8.dp),
+                    colors = OutlinedTextFieldDefaults.colors(
+                        focusedBorderColor = darkPurple,
+                        unfocusedBorderColor = Color.Black,
+                    ),
+                    keyboardOptions = KeyboardOptions.Default.copy(
+                        imeAction = ImeAction.Next
+                    ),
+                    singleLine = true
+                )
+
+                Spacer(modifier = Modifier.height(16.dp))
+
+                // Pilihan Jenis Kelamin
+                Text("JENIS KELAMIN", fontSize = 15.sp, fontWeight = FontWeight.Bold, color = Color.Gray)
+                Column {
+                    jenisKelaminOptions.forEach { option ->
+                        Row(
+                            verticalAlignment = Alignment.CenterVertically,
+                            modifier = Modifier.fillMaxWidth().padding(vertical = 4.dp)
+                        ) {
+                            RadioButton(
+                                selected = (jenisKelamin == option),
+                                onClick = { jenisKelamin = option },
+                                colors = RadioButtonDefaults.colors(selectedColor = darkPurple)
+                            )
+                            Text(text = option, modifier = Modifier.padding(start = 8.dp))
+                        }
+                    }
+                }
+
+                Spacer(modifier = Modifier.height(16.dp))
+
+                // Pilihan Status Perkawinan
+                Text("STATUS PERKAWINAN", fontSize = 15.sp, fontWeight = FontWeight.Bold, color = Color.Gray)
+                Column {
+                    statusPerkawinanOptions.forEach { option ->
+                        Row(
+                            verticalAlignment = Alignment.CenterVertically,
+                            modifier = Modifier.fillMaxWidth().padding(vertical = 4.dp)
+                        ) {
+                            RadioButton(
+                                selected = (statusPerkawinan == option),
+                                onClick = { statusPerkawinan = option },
+                                colors = RadioButtonDefaults.colors(selectedColor = darkPurple)
+                            )
+                            Text(text = option, modifier = Modifier.padding(start = 8.dp))
+                        }
+                    }
+                }
+
+                Spacer(modifier = Modifier.height(16.dp))
+
+                // Input Alamat
+                Text("ALAMAT", fontSize = 15.sp, fontWeight = FontWeight.Bold, color = Color.Gray, modifier = Modifier.padding(bottom = 4.dp))
+                OutlinedTextField(
+                    value = alamat,
+                    onValueChange = { alamat = it },
+                    label = { Text("Alamat") },
+                    modifier = Modifier.fillMaxWidth(),
+                    shape = RoundedCornerShape(8.dp),
+                    colors = OutlinedTextFieldDefaults.colors(
+                        focusedBorderColor = darkPurple,
+                        unfocusedBorderColor = Color.Black,
+                    ),
+                    keyboardOptions = KeyboardOptions.Default.copy(
+                        imeAction = ImeAction.Done
+                    ),
+                    singleLine = true
+                )
+
+                Spacer(modifier = Modifier.height(32.dp))
