@@ -184,3 +184,9 @@ fun Formulir(navController: NavController) {
         }
     }
 }
+
+@Preview(showBackground = true)
+@Composable
+fun FormulirBaruPreview() {
+    Formulir(navController = rememberNavController())
+}
