@@ -23,3 +23,44 @@ import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import com.example.tugasnavigasi.R
 import com.example.tugasnavigasi.Routes
+
+@Composable
+// 2. Nama fungsi diubah dan menerima NavController
+fun Formulir(navController: NavController) {
+    var namaLengkap by remember { mutableStateOf("") }
+    var jenisKelamin by remember { mutableStateOf("") }
+    val jenisKelaminOptions = listOf("Laki-laki", "Perempuan")
+    var statusPerkawinan by remember { mutableStateOf("") }
+    val statusPerkawinanOptions = listOf("Janda", "Lajang", "Duda") // Menambah opsi
+    var alamat by remember { mutableStateOf("") }
+
+    // Warna dari kode Anda
+    val lightPurple = Color(0xFFB17EEA)
+    val darkPurple = Color(0xFF6750A4)
+    val backgroundColor = Color(0xFFEAE1FA)
+
+    Column(
+        modifier = Modifier
+            .fillMaxSize()
+            .background(backgroundColor)
+            .padding(top = 53.dp)
+    ) {
+        // Header
+        Box(
+            modifier = Modifier
+                .fillMaxWidth()
+                .background(lightPurple)
+                // Tinggi header bisa lebih fleksibel
+                .heightIn(min = 100.dp)
+                .padding(16.dp),
+            contentAlignment = Alignment.BottomStart
+        ) {
+            Text(
+                text = "Formulir Pendaftaran",
+                fontSize = 30.sp,
+                color = Color.White,
+                modifier = Modifier.padding(start = 10.dp)
+            )
+        }
+
+        Spacer(modifier = Modifier.height(16.dp))
