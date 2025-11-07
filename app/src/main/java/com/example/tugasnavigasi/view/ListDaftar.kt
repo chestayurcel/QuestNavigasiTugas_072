@@ -112,3 +112,49 @@ fun ListDaftar(navController: NavController) {
         }
     }
 }
+
+// Composable untuk setiap baris informasi
+@Composable
+fun InfoCard(label: String, value: String, backgroundColor: Color, labelColor: Color) {
+    Card(
+        modifier = Modifier
+            .fillMaxWidth(),
+        shape = RoundedCornerShape(12.dp),
+        colors = CardDefaults.cardColors(
+            containerColor = backgroundColor
+        )
+    ) {
+        Column(
+            modifier = Modifier
+                .padding(horizontal = 16.dp, vertical = 14.dp)
+        ) {
+            Text(
+                text = label,
+                fontSize = 15.sp,
+                color = labelColor,
+                fontWeight = FontWeight.Bold
+            )
+            Text(
+                text = value,
+                fontSize = 20.sp,
+                fontFamily = FontFamily.Cursive,
+                color = Color.Black
+            )
+        }
+    }
+}
+
+// Composable untuk tombol custom
+@Composable
+fun CustomButton(text: String, color: Color, onClick: () -> Unit) {
+    Button(
+        onClick = onClick,
+        modifier = Modifier
+            .fillMaxWidth()
+            .height(46.dp),
+        shape = RoundedCornerShape(12.dp),
+        colors = ButtonDefaults.buttonColors(containerColor = color)
+    ) {
+        Text(text = text, fontSize = 16.sp, color = Color.White)
+    }
+}
