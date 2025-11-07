@@ -85,3 +85,9 @@ fun HalamanAwal(navController: NavController) {
         Spacer(modifier = Modifier.height(30.dp))
     }
 }
+
+@Preview(showBackground = true)
+@Composable
+fun HalamanAwalPreview() {
+    HalamanAwal(navController = rememberNavController())
+}
